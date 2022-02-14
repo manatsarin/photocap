@@ -113,7 +113,6 @@ while True:
 
     if biggest.size !=0:
         imgWarped=getWarp(img,biggest)
-        cv2.imwrite("output.jpg", imgWarped)
         imageArray = ([img, imgWarped])
         # cv2.imshow("ImageWarped", imgWarped)
     else:
@@ -125,3 +124,5 @@ while True:
 
     if cv2.waitKey(1) & 0xFF == ord('q'):
         break
+    elif cv2.waitKey(1) & 0xFF == ord('s'):
+        cv2.imwrite("imgOutput.jpg", imgWarped)
