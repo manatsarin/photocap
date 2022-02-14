@@ -106,7 +106,7 @@ while True:
     # img = cv2.imread("550501410290.jpg")
     # img = cv2.imread("550501410225.jpg")
     # img = cv2.resize(img,(widthImg,heightImg))
-    img = cv2.resize(img,(480,640))
+    # img = cv2.resize(img,(480,640))
     imgContour = img.copy()
     imgThres = preProcessing(img)
     biggest = getContours(imgThres)
@@ -114,15 +114,17 @@ while True:
     if biggest.size !=0:
         imgWarped=getWarp(img,biggest)
         imageArray = ([img, imgWarped])
-        # cv2.imshow("ImageWarped", imgWarped)
+        cv2.imshow("ImageWarped", imgWarped)
     else:
         imageArray = ([imgContour, img])
 
     stackedImages = stackImages(0.6,imageArray)
-    cv2.imshow("WorkFlow", stackedImages)
-
+    # cv2.imshow("WorkFlow", stackedImages)
+    cv2.imshow("WorkFlow", img)
 
     if cv2.waitKey(1) & 0xFF == ord('q'):
         break
     elif cv2.waitKey(1) & 0xFF == ord('s'):
         cv2.imwrite("imgOutput.jpg", imgWarped)
+
+
